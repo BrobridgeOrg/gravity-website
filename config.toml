@@ -1,0 +1,35 @@
+baseURL = "http://localhost/"
+languageCode = "zh-tw"
+title = "Gravity - Software-defined Data Platform"
+theme = "geekdoc"
+
+# Geekdoc required configuration
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+disablePathToLower = true
+
+# Needed for mermaid shortcodes
+[markup]
+  [markup.goldmark.renderer]
+    # Needed for mermaid shortcode
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 9
+
+[params]
+  geekdocLogo = "logo.png"
+  geekdocSearch = true
+  geekdocSearchShowParent = true
+  geekdocImageLazyLoading = true
+  geekdocDarkModeDim = true
+
+[languages]
+  [languages.en]
+    title = "GRAVITY"
+    languageName = "English"
+    weight = 1
+  [languages.zh-tw]
+    title = "GRAVITY"
+    languageName = "Traditional Chinese"
+    weight = 1
