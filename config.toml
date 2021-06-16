@@ -18,6 +18,7 @@ disablePathToLower = true
     endLevel = 9
 
 [params]
+  geekdocToC = 4
   geekdocLogo = "logo.png"
   geekdocSearch = true
   geekdocSearchShowParent = true

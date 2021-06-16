@@ -121,6 +121,11 @@
   }
 }
 
+.gdoc-markdown hr {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
 .gdoc-brand .gdoc-brand__img {
 	width: 3rem;
 	height: 3rem;
