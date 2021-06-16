@@ -1,6 +1,6 @@
 ---
 title: FAQ 疑難排解
-weight: 3
+weight: 4
 ---
 
 這裡收集了一些對於 GRAVITY 的常見問題，以及相關疑難解答。
