@@ -4,6 +4,18 @@ title: "快速上手"
 
 本文件作爲 Gravity Quick-Start 的快速部署操作指引，將說明如何部署一套最簡單的 Gravity 資料複寫（Replication）管線，從 MySQL 即時抄寫所有的變更資料到 PostgreSQL，實現異質資料庫之間的資料抄寫。
 
+{{< mermaid class="text-center">}}
+flowchart LR
+	source([MySQL]) --> |推送資料更新| gravity{{GRAVITY}}
+	gravity{{GRAVITY}} --> |寫入資料| target([PostgreSQL])
+
+	class gravity gravity;
+	classDef gravity fill:#fff,color:#333,stroke:#b00,stroke-width:3px;
+
+	class source,target database;
+	classDef database fill:#eee,color:#555,stroke:#bbb,stroke-width:2px;
+{{< /mermaid >}}
+
 ## 環境準備
 
 此範例將利用 Docker 進行部署，如果測試系統上還沒安裝 docker-compose 套件，請先完成安裝：

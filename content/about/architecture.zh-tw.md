@@ -1,5 +1,5 @@
 ---
-title: GRAVITY 架構說明
+title: 技術架構說明
 weight: 2
 ---
 

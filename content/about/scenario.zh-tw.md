@@ -1,5 +1,5 @@
 ---
-title: GRAVITY 應用場景
+title: 應用場景
 weight: 3
 ---
 
