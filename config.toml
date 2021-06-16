@@ -1,4 +1,4 @@
-baseURL = "http://localhost/"
+baseURL = "https://brobridgeorg.github.io/gravity-website"
 languageCode = "zh-tw"
 title = "Gravity - Software-defined Data Platform"
 theme = "geekdoc"
