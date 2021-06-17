@@ -52,7 +52,16 @@ services:
 {{< /highlight >}}
 {{< /tab >}}
 {{< /tabs >}}
-正常安裝完成後，NATS 應該會運行在 localhost:4222 之上，接下來我們將會以此位置進行 GRAVITY 的設定。
+安裝完成後，NATS 服務會運行在本機的 4222 埠口，接下來我們將會透過下方資訊欄取得連線位址並以此連線資訊 ( 172.17.0.1:4222 ) 進行 GRAVITY 的設定。
+
+{{< hint info >}}
+**取得NATS連線位址**
+```shell
+ifconfig docker0 | grep 'inet '
+inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+```
+{{< /hint >}}
+
 
 ---
 
@@ -99,8 +108,8 @@ services:
 
      # 將 NATS 的連線位置設定在此
      environment:
-     - GRAVITY_CONTROLLER_GRAVITY_HOST=localhost
-     - GRAVITY_CONTROLLER_GRAVITY_PORT=4222
+       GRAVITY_CONTROLLER_GRAVITY_HOST: 172.17.0.1
+       GRAVITY_CONTROLLER_GRAVITY_PORT: 4222
 {{< /highlight >}}
 {{< /tab >}}
 {{< tab "synchronizer.yaml" >}}
@@ -113,7 +122,7 @@ services:
      restart: always
      hostname: gravity-synchronizer
      environment:
-       GRAVITY_SYNCHRONIZER_GRAVITY_HOST: localhost
+       GRAVITY_SYNCHRONIZER_GRAVITY_HOST: 172.17.0.1
        GRAVITY_SYNCHRONIZER_GRAVITY_PORT: 4222
        GRAVITY_SYNCHRONIZER_RULES_SETTINGS: |
          {
