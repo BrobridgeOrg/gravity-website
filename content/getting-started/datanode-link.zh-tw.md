@@ -91,3 +91,9 @@ flowchart LR
 	class more others;
 	classDef others fill:#555,color:#fff;
 {{< /mermaid >}}
+
+{{< hint info >}}
+**可以預見的資料節點管理議題**
+
+資料節點有如各系統對外資料存取的代理人，我們可以從資料節點上來輕易實現資料授權、訂閱管控等機制。當未來資料節點越來越多時，便形成一個巨大的資料鏈路系統，這時就需要引入數據網格（Data Mesh）的概念與技術進行管控。
+{{< /hint >}}

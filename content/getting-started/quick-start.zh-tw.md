@@ -6,11 +6,11 @@ title: "快速上手"
 
 {{< mermaid class="text-center">}}
 flowchart LR
-	source([MySQL]) --> |推送資料更新| gravity{{GRAVITY}}
-	gravity{{GRAVITY}} --> |寫入資料| target([PostgreSQL])
+	source([MySQL\n資料庫系統]) --> |推送資料更新| gravity{{GRAVITY}}
+	gravity((GRAVITY\n數據鏈路節點)) --> |寫入資料| target([PostgreSQL\n資料庫系統])
 
 	class gravity gravity;
-	classDef gravity fill:#fff,color:#333,stroke:#b00,stroke-width:3px;
+	classDef gravity fill:#fff,color:#b00,stroke:#b00,stroke-width:5px;
 
 	class source,target database;
 	classDef database fill:#eee,color:#555,stroke:#bbb,stroke-width:2px;

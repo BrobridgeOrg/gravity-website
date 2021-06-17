@@ -29,7 +29,7 @@ services:
 然後於終端機介面執行下列安裝命令：
 
 ```shell
-docker-compose -f nats.yaml up
+docker-compose -f nats.yaml up -d
 ```
 
 安裝完成後，NATS 服務會運行在 4222 Port，之後我們就會使用 NATS 的連線資訊來設定 GRAVITY 的各個元件。
@@ -40,7 +40,7 @@ docker-compose -f nats.yaml up
 因為容器隔離性的問題，在同一台機器上想要從一個容器裡連線另一個容器內的服務，需要知道 Docker 網路介面的 IP 位置，可以用下列命令取得：
 
 ```shell
-ifconfig docker0 | grep 'inet '
+$ ifconfig docker0 | grep 'inet '
 inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
 ```
 

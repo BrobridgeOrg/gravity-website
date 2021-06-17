@@ -165,8 +165,8 @@ services:
 在準備好 YAML 之後，就可以開始使用 Docker Compose 進行部署：
 
 ```shell
-docker-compose -f controller.yaml up
-docker-compose -f synchronizer.yaml up
+docker-compose -f controller.yaml up -d
+docker-compose -f synchronizer.yaml up -d
 ```
 
 ---
@@ -219,7 +219,7 @@ services:
 進行部署：
 
 ```shell
-docker-compose -f adapter-mysql.yaml up
+docker-compose -f adapter-mysql.yaml up -d
 ```
 
 ---
@@ -265,5 +265,5 @@ services:
 進行部署：
 
 ```shell
-docker-compose -f transmitter-postgres.yaml up
+docker-compose -f transmitter-postgres.yaml up -d
 ```
