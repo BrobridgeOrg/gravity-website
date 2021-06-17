@@ -48,8 +48,12 @@ GRAVITY 使用 NATS 作為核心的訊息交換引擎，再開始一切安裝部
 {{< mermaid class="text-center">}}
 flowchart LR
 	source([MySQL]) --> |推送資料更新| adapter(資料源適配器\nAdapter)
+
+	subgraph GRAVITY
 	adapter(資料源適配器\nAdapter) --> gravity{{GRAVITY\n資料節點}}
 	gravity{{GRAVITY\n資料節點}} --> transmitter(資料傳輸器\nTransmitter)
+	end
+
 	transmitter(資料傳輸器\nTransmitter) --> |寫入資料| target([PostgreSQL])
 
 	class gravity gravity;
