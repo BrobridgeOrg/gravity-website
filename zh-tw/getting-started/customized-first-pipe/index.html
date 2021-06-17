@@ -40,7 +40,9 @@ flowchart LR
 </span><span class=w>     </span><span class=nt>expose</span><span class=p>:</span><span class=w>
 </span><span class=w>     </span>- <span class=s2>&#34;4222&#34;</span><span class=w>
 </span><span class=w>     </span><span class=nt>ports</span><span class=p>:</span><span class=w>
-</span><span class=w>       </span>- <span class=s2>&#34;4222:4222&#34;</span></code></pre></td></tr></table></div></div></div></div>正常安裝完成後，NATS 應該會運行在 localhost:4222 之上，接下來我們將會以此位置進行 GRAVITY 的設定。</p><hr><div class=gdoc-page__anchorwrap><h2 id=安裝設定與部署>安裝設定與部署
+</span><span class=w>       </span>- <span class=s2>&#34;4222:4222&#34;</span></code></pre></td></tr></table></div></div></div></div>安裝完成後，NATS 服務會運行在本機的 4222 埠口，接下來我們將會透過下方資訊欄取得連線位址並以此連線資訊 ( 172.17.0.1:4222 ) 進行 GRAVITY 的設定。</p><blockquote class="gdoc-hint info"><p><strong>取得NATS連線位址</strong></p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>ifconfig docker0 <span class=p>|</span> grep <span class=s1>&#39;inet &#39;</span>
+inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+</code></pre></div></blockquote><hr><div class=gdoc-page__anchorwrap><h2 id=安裝設定與部署>安裝設定與部署
 <a data-clipboard-text=https://brobridgeorg.github.io/gravity-website/zh-tw/getting-started/customized-first-pipe/#安裝設定與部署 class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 安裝設定與部署" href=#%e5%ae%89%e8%a3%9d%e8%a8%ad%e5%ae%9a%e8%88%87%e9%83%a8%e7%bd%b2><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg></a></h2></div><pre class="gdoc-mermaid mermaid text-center">
 flowchart LR
 	source([MySQL]) --> |推送資料更新| adapter(資料源適配器\nAdapter)
@@ -87,8 +89,8 @@ flowchart LR
 </span><span class=w>
 </span><span class=w>     </span><span class=c># 將 NATS 的連線位置設定在此</span><span class=w>
 </span><span class=w>     </span><span class=nt>environment</span><span class=p>:</span><span class=w>
-</span><span class=w>     </span>- <span class=l>GRAVITY_CONTROLLER_GRAVITY_HOST=localhost</span><span class=w>
-</span><span class=w>     </span>- <span class=l>GRAVITY_CONTROLLER_GRAVITY_PORT=4222</span></code></pre></td></tr></table></div></div></div><input type=radio class="gdoc-tabs__control hidden" name=tabs-gravity id=tabs-gravity-1>
+</span><span class=w>       </span><span class=nt>GRAVITY_CONTROLLER_GRAVITY_HOST</span><span class=p>:</span><span class=w> </span><span class=m>172.17.0.1</span><span class=w>
+</span><span class=w>       </span><span class=nt>GRAVITY_CONTROLLER_GRAVITY_PORT</span><span class=p>:</span><span class=w> </span><span class=m>4222</span></code></pre></td></tr></table></div></div></div><input type=radio class="gdoc-tabs__control hidden" name=tabs-gravity id=tabs-gravity-1>
 <label for=tabs-gravity-1 class=gdoc-tabs__label>synchronizer.yaml</label><div class="gdoc-markdown--nested gdoc-tabs__content"><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
@@ -144,7 +146,7 @@ flowchart LR
 </span><span class=w>     </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>always</span><span class=w>
 </span><span class=w>     </span><span class=nt>hostname</span><span class=p>:</span><span class=w> </span><span class=l>gravity-synchronizer</span><span class=w>
 </span><span class=w>     </span><span class=nt>environment</span><span class=p>:</span><span class=w>
-</span><span class=w>       </span><span class=nt>GRAVITY_SYNCHRONIZER_GRAVITY_HOST</span><span class=p>:</span><span class=w> </span><span class=l>localhost</span><span class=w>
+</span><span class=w>       </span><span class=nt>GRAVITY_SYNCHRONIZER_GRAVITY_HOST</span><span class=p>:</span><span class=w> </span><span class=m>172.17.0.1</span><span class=w>
 </span><span class=w>       </span><span class=nt>GRAVITY_SYNCHRONIZER_GRAVITY_PORT</span><span class=p>:</span><span class=w> </span><span class=m>4222</span><span class=w>
 </span><span class=w>       </span><span class=nt>GRAVITY_SYNCHRONIZER_RULES_SETTINGS</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
 </span><span class=sd>         {
