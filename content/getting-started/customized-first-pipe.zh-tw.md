@@ -3,7 +3,7 @@ title: 客製化打造第一條管線
 weight: 2
 ---
 
-如果你已經閱讀過「快速上手」，應該已經知道 GRAVITY 能透過 Docker 進行快速部署。只不過因為在該文件中並沒有說明設定細節，你可能還不知道如何客製化一條真正有用的資料管線。因此，本文件將延續案例，示範如何打造您的第一條資料管線之外，並會初步針對設定工作進行更多細節說明。
+如果你已經閱讀過「[快速上手]({{< ref "quick-start.zh-tw.md" >}})」，應該已經知道 GRAVITY 能透過 Docker 進行快速部署。只不過因為在該文件中並沒有說明設定細節，你可能還不知道如何客製化一條真正有用的資料管線。因此，本文件將延續案例，示範如何打造您的第一條資料管線之外，並會初步針對設定工作進行更多細節說明。
 
 ---
 
@@ -13,59 +13,19 @@ weight: 2
 
 {{< mermaid class="text-center">}}
 flowchart LR
-	source([MySQL]) --> |推送資料更新| gravity{{GRAVITY}}
-	gravity{{GRAVITY}} --> |寫入資料| target([PostgreSQL])
+	source([MySQL\n資料庫系統]) --> |推送資料更新| gravity{{GRAVITY}}
+	gravity((GRAVITY\n數據鏈路節點)) --> |寫入資料| target([PostgreSQL\n資料庫系統])
 
 	class gravity gravity;
-	classDef gravity fill:#fff,color:#333,stroke:#b00,stroke-width:3px;
+	classDef gravity fill:#fff,color:#b00,stroke:#b00,stroke-width:5px;
 
 	class source,target database;
 	classDef database fill:#eee,color:#555,stroke:#bbb,stroke-width:2px;
 {{< /mermaid >}}
 
-{{< hint warning >}}
-**注意**
-
-這裡假設你已經分別安裝好 MySQL 和 PostgreSQL，如果尚未安裝資料庫系統，請先準備好環境後再繼續進行本文件的指引。
-{{< /hint >}}
-
 ---
 
-## 環境準備
-
-GRAVITY 使用 NATS 作為核心的訊息交換引擎，再開始一切安裝部署之前，需要先安裝 NATS 元件：
-{{< tabs "nats" >}}
-{{< tab "nats.yaml" >}}
-{{< highlight yaml "linenos=table" >}}
-
-version: '3'
-
-services:
-   # Gravity Core Components
-   internal-nats-server:
-     image: "nats:2.2.6"
-     restart: always
-     expose:
-     - "4222"
-     ports:
-       - "4222:4222"
-{{< /highlight >}}
-{{< /tab >}}
-{{< /tabs >}}
-安裝完成後，NATS 服務會運行在本機的 4222 埠口，接下來我們將會透過下方資訊欄取得連線位址並以此連線資訊 ( 172.17.0.1:4222 ) 進行 GRAVITY 的設定。
-
-{{< hint info >}}
-**取得NATS連線位址**
-```shell
-ifconfig docker0 | grep 'inet '
-inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
-```
-{{< /hint >}}
-
-
----
-
-## 安裝設定與部署
+## 實作架構
 
 {{< mermaid class="text-center">}}
 flowchart LR
@@ -90,6 +50,33 @@ flowchart LR
 	class source,target database;
 	classDef database fill:#eee,color:#555,stroke:#bbb,stroke-width:2px;
 {{< /mermaid >}}
+
+依圖所示，此範例中實作上會由三個部分所組成，形成完整的數據鏈路：
+
+* **MySQL 資料源適配器（Adapter）**
+
+  資料源適配器（Adapter）用於從 MySQL 資料庫系統收集資料變更事件，並將資料送入資料節點。
+
+* **資料節點（Data Node）**
+
+  資料節點會將資料分類壓縮保存，並即時生成資料快照（Snapshot） ，然後等待接受資料傳輸器前來訂閱資料。
+
+* **PostgreSQL 資料傳輸器（Transmitter）**
+
+  資料傳輸器（Transmitter）會在資料節點上訂閱資料，然後將資料寫入到目標的 PostgreSQL 資料庫。
+
+---
+
+{{< hint warning >}}
+**請特別檢查您的環境已經準備好**
+
+這裡假設你已經分別安裝好 MySQL 和 PostgreSQL，如果尚未安裝資料庫系統，請先準備好環境後再繼續進行本文件的指引。此外，在開始建構任何管線和資料鏈路之前，你也應該已經確保自己依照「[系統環境準備]({{< ref "prepare-environment.zh-tw.md" >}})」的指引，安裝好相關的基礎環境和設定。
+{{< /hint >}}
+
+
+---
+
+## 安裝設定與部署
 
 ### Step 1: 部署 GRAVITY 資料節點
 
@@ -165,6 +152,25 @@ services:
 {{< /tab >}}
 {{< /tabs >}}
 
+#### 同步器設定說明
+
+> 同步器的規則設定參數 `GRAVITY_SYNCHRONIZER_RULES_SETTINGS` 需要一個 JSON 格式，其中可以於 `rules` 陣列內定義多組規則，決定收集的資料該如何處理和保存。
+>
+> 在這範例中定義了兩種規則，讓資料節點只會接受兩種事件 `accountInitialized` 和 `accountCreated`，用於在第一次同步時接受資料源既有資料，以及資料源即時的新資料（當資料源插入資料時）接收。而設定中的 `collection` 是在資料節點的資料集（Collection），我們可以決定要將事件放到指定資料集進行保存，若是多個事件都被指定放入同一個資料集，該資料集就會聚合多個事件的資料。
+>
+> 然後我們定義了資料欄位的對應表 `mapping`，描述來源資料的欄位 `source`，如何對應到資料集中新的欄位 `target`，在範例中，我們保持了欄位的定義不變，實現完全的資料對超機制。
+>
+> 最後，為資料決定能唯一識別資料的主鍵（Primary Key），資料節點會依據主鍵進行資料更新、聚合關聯和快照。
+
+在準備好 YAML 之後，就可以開始使用 Docker Compose 進行部署：
+
+```shell
+docker-compose -f controller.yaml up
+docker-compose -f synchronizer.yaml up
+```
+
+---
+
 ### Step 2: 部署資料源適配器（Adapter）
 
 {{< tabs "adapter" >}}
@@ -210,10 +216,18 @@ services:
 {{< /tab >}}
 {{< /tabs >}}
 
+進行部署：
+
+```shell
+docker-compose -f adapter-mysql.yaml up
+```
+
+---
+
 ### Step 3: 部署資料傳輸器（Transmitter）
 
 {{< tabs "transmitter" >}}
-{{< tab "trnsmitter-postgres.yaml" >}}
+{{< tab "transmitter-postgres.yaml" >}}
 {{< highlight yaml "linenos=table" >}}
 version: '3'
 
@@ -248,6 +262,8 @@ services:
 {{< /tab >}}
 {{< /tabs >}}
 
----
+進行部署：
 
-## 驗證管線
+```shell
+docker-compose -f transmitter-postgres.yaml up
+```
