@@ -57,7 +57,7 @@ flowchart LR
 
 	gravityA{{GRAVITY\n資料節點 A}} ==> gravityB{{GRAVITY\n資料節點 B}}
 	gravityA{{GRAVITY\n資料節點 A}} ==> gravityC{{GRAVITY\n資料節點 C}}
-	gravityD{{GRAVITY\n資料節點 D}} ==> gravityC{{GRAVITY\n資料節點 C}}
+	gravityD{{GRAVITY\n資料節點 D}} == 授權訂閱 ==> gravityC{{GRAVITY\n資料節點 C}}
 
 	subgraph 資料複寫同步
 	gravityB{{GRAVITY\n資料節點 B}} --> transmitterA(資料傳輸器\nTransmitter)
