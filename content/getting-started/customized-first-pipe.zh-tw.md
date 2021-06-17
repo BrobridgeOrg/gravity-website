@@ -36,7 +36,17 @@ flowchart LR
 GRAVITY 使用 NATS 作為核心的訊息交換引擎，再開始一切安裝部署之前，需要先安裝 NATS 元件：
 
 ```shell
-待補充...
+version: '3'
+
+services:
+   # Gravity Core Components
+   internal-nats-server:
+     image: "nats:2.2.6"
+     restart: always
+     expose:
+     - "4222"
+     ports:
+       - "4222:4222"
 ```
 
 正常安裝完成後，NATS 應該會運行在 localhost:4222 之上，接下來我們將會以此位置進行 GRAVITY 的設定。
