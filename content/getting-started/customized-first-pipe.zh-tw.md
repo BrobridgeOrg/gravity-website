@@ -34,8 +34,10 @@ flowchart LR
 ## 環境準備
 
 GRAVITY 使用 NATS 作為核心的訊息交換引擎，再開始一切安裝部署之前，需要先安裝 NATS 元件：
+{{< tabs "nats" >}}
+{{< tab "nats.yaml" >}}
+{{< highlight yaml "linenos=table" >}}
 
-```shell
 version: '3'
 
 services:
@@ -47,8 +49,9 @@ services:
      - "4222"
      ports:
        - "4222:4222"
-```
-
+{{< /highlight >}}
+{{< /tab >}}
+{{< /tabs >}}
 正常安裝完成後，NATS 應該會運行在 localhost:4222 之上，接下來我們將會以此位置進行 GRAVITY 的設定。
 
 ---
