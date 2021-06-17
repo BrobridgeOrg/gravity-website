@@ -45,6 +45,26 @@ GRAVITY 使用 NATS 作為核心的訊息交換引擎，再開始一切安裝部
 
 ## 安裝設定與部署
 
+{{< mermaid class="text-center">}}
+flowchart LR
+	source([MySQL]) --> |推送資料更新| adapter(資料源適配器\nAdapter)
+	adapter(資料源適配器\nAdapter) --> gravity{{GRAVITY\n資料節點}}
+	gravity{{GRAVITY\n資料節點}} --> transmitter(資料傳輸器\nTransmitter)
+	transmitter(資料傳輸器\nTransmitter) --> |寫入資料| target([PostgreSQL])
+
+	class gravity gravity;
+	classDef gravity fill:#b00,color:#fff,stroke:#800,stroke-width:3px;
+
+	class adapter adapter;
+	classDef adapter fill:#555,color:#fff,stroke:#fff,stroke-width:3px;
+
+	class transmitter transmitter;
+	classDef transmitter fill:#222,color:#fff,stroke:#fff,stroke-width:3px;
+
+	class source,target database;
+	classDef database fill:#eee,color:#555,stroke:#bbb,stroke-width:2px;
+{{< /mermaid >}}
+
 ### Step 1: 部署 GRAVITY 資料節點
 
 GRAVITY 的資料節點由控制器（Controller）和同步器（Synchronizer）兩個核心元件所組成，我們分別各準備一個 YAML 為其做設定和部署：
