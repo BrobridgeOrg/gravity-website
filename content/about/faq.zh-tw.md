@@ -29,11 +29,21 @@ weight: 5
 
 ---
 
-## 部署相關問題
+## 部署安裝問題
 
-### 目前 Gravity 支援哪些作業系統平台環境
+### GRAVITY 是否能夠單機部署？
 
-### Gravity 是否只能在 k8s 環境內執行使用
+> 可以，使用 GRAVITY 官方的容器映像檔，你可以直接使用 Docker 進行部署。只要能夠使用容器工具，無論是在本機、虛擬機上，都可以搭建 GRAVITY。
+
+### GRAVITY 能在 Kubernetes 平台上部署嗎？
+
+> 當然可以，GRAVITY 是基於雲原生（Cloud Native）理念所開發，我們所釋出的容器映像檔，也符合各主流容器平台的相關標準。
+
+### Kubernetes 上是否有更簡便的方式，大規模部署和管理 GRAVITY 資料管線？
+
+> 社群版並沒有這個功能，而企業版（Enterprise Edition）提供 Operater 的部署管理方式，讓使用者可以在 Kuberentes 平台上輕易管理大量的 GRAVITY 管線。
+
+### 目前 Gravity 支援哪些作業系統平台環境？
 
 ### Gravity 可以支援讀取哪些資料庫的 CDC (資料擷取) 的支援有哪些
 
