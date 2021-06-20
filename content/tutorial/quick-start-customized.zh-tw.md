@@ -136,7 +136,7 @@ Show Current PostgreSQL Database's Tables.
 無論如何，請確定其中的欄位名稱要跟來源及目標資料庫所定義的 schema 要一致。
 
 
-### Step 3: 部署 Gravity
+### Step 5: 部署 Gravity
 
 當 docker-compose.yaml 修改好之後，就可以啓用了管線了：
 
