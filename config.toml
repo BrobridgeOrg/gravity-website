@@ -23,7 +23,7 @@ disablePathToLower = true
   geekdocSearch = true
   geekdocSearchShowParent = true
   geekdocImageLazyLoading = true
-  geekdocDarkModeDim = true
+  geekdocDarkModeDim = false
 
 [languages]
   [languages.en]
