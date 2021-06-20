@@ -216,6 +216,20 @@ services:
 {{< /tab >}}
 {{< /tabs >}}
 
+#### 資料源設定說明
+
+> 在 YAML 檔中代入 `GRAVITY_ADAPTER_MYSQL_SOURCE_SETTINGS` 環境變數可以設定資料源的連線資訊，讓適配器（Adapter）可以去連接資料庫系統以取的事件和資料，由於在這例子中選擇的是 MySQL 的適配器，因此填入的是 MySQL 資料庫的連線資訊。
+>
+> 此環境變數的內容是 JSON 格式，其中可以在 `sources` 欄位裡設定多組來源，除了要指定連線資訊之外，也需要填入 `tables` 選擇需要監聽的資料表（Table）以及需要處理的事件（Event）。
+>
+> 上面例子中的設定代表著下列意義：
+>
+> * 監聽 `users` 資料表。
+> * 啟用 `initialLoad` 和監聽 `snapshot` 事件，在第一次啟動時載入完整的既有資料。
+> * 監聽 `create` 事件，即時接收被插入（Insert）的資料事件。
+>
+> 此外，在監聽事件時，需要設定進入到資料節點的事件名稱，事件名稱則對應同步器的事件處理規則設定（`accountInitialized` 和 `accountCreated`）。
+
 進行部署：
 
 ```shell
@@ -262,8 +276,26 @@ services:
 {{< /tab >}}
 {{< /tabs >}}
 
+#### 目標資料庫設定
+
+> 資料傳輸器會從資料節點訂閱所需要的資料集（collection），然後將資料集的資料寫入到指定的資料庫系統（以這範例來說是 PostgreSQL），我們需要設定目標資料庫的連線資訊，讓傳輸器可以順利連接資料庫。
+>
+> 由於我們需要指定訂閱的資料集，需要額外設定 `GRAVITY_TRANSMITTER_POSTGRES_SUBSCRIPTION_SETTINGS` 讓傳輸器知道被訂閱的資料集名稱，以及將要寫入的資料表。在上面範例中，我們將訂閱資料節點上的 `accountData` 資料集，並將接受到的寫入到 PostgreSQL 的 `accounts` 資料表。
+
 進行部署：
 
 ```shell
 docker-compose -f transmitter-postgres.yaml up -d
 ```
+
+---
+
+## 部署完成及更多客製化
+
+若將元件設定好並部署完成，資料就會依據我們的設計，從 MySQL 的 `users` 資料表抄寫至 PostgreSQL 的 `accounts` 資料表。由於我們只有監聽「新增事件」，所以只有資料新增、插入時的資料，沒有任何事後進行變更（Update）或刪除（Delete）的資料更新。若有更新或刪除的資料同步需求，則再補上事件監聽和事件處理規則即可。
+
+{{< hint warning >}}
+**關於適配器和傳輸器的設定參數**
+
+不同的適配器（Adapter）和傳輸器（Transmitter）依據功能和對接系統不同，可能有著截然不同的行為和設定，若有需要知道更多細節，請參考每個元件的專屬說明文件。
+{{< /hint >}}
