@@ -74,7 +74,7 @@ docker-compose -f transmitter.yaml up -d
 GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
 GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
 SUBSCRIBER.SUBSCRIBER_ID	| 字串		| mssql_transmitter	| 指定資料傳輸器在資料節點上的唯一識別 ID
-SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| mssql Transmitter	| 指定資料傳輸器的顯示名稱
+SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| MSSQL Transmitter	| 指定資料傳輸器的顯示名稱
 
 ---
 
