@@ -17,7 +17,7 @@ title: PostgreSQL Transmitter
 
 > GRAVITY_TRANSMITTER_POSTGRESQL_ + <參數名稱>
 
-例如當我們說參數為 GRAVITY_HOST 時，實際的環境變數為 GRAVITY_TRANSMITTER_POSTGRESQL_GRAVITY_HOST。
+而參數名稱因為分類，所有的字元「 . 」在環境變數上都將替換成字元「 _ 」表示，例如當我們說參數為 GRAVITY.HOST 時，實際的環境變數為 GRAVITY_TRANSMITTER_POSTGRESQL_GRAVITY_HOST。
 {{< /hint >}}
 
 ---
@@ -26,12 +26,12 @@ title: PostgreSQL Transmitter
 
 這裡是所有關於 GRAVITY 的相關參數，用於讓資料傳輸器連接上資料節點，並註冊成為合法的資料接收端。
 
-參數				| 資料型態	| 預設值				| 說明
----					| ---		| ---					| ---
-GRAVITY_HOST		| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
-GRAVITY_DOMAIN		| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
-SUBSCRIBER_ID		| 字串		| postgres_transmitter	| 指定資料傳輸器在資料節點上的唯一識別 ID
-SUBSCRIBER_NAME		| 字串		| Postgres Transmitter	| 指定資料傳輸器的顯示名稱
+參數						| 資料型態	| 預設值				| 說明
+---							| ---		| ---					| ---
+GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
+GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
+SUBSCRIBER.SUBSCRIBER_ID	| 字串		| postgres_transmitter	| 指定資料傳輸器在資料節點上的唯一識別 ID
+SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| Postgres Transmitter	| 指定資料傳輸器的顯示名稱
 
 ---
 
@@ -41,12 +41,12 @@ SUBSCRIBER_NAME		| 字串		| Postgres Transmitter	| 指定資料傳輸器的顯�
 
 參數				| 資料型態	| 預設值	| 說明
 ---					| ---		| ---		| ---
-DATABASE_HOST		| 字串		|			| 目標資料庫主機位置
-DATABASE_PORT		| 整數		|			| 目標資料庫埠號
-DATABASE_SECURE		| 布林值	| false		| 是否啟用加密連線
-DATABASE_USERNANE	| 字串		|			| 資料庫連線帳號
-DATABASE_PASSWORD	| 字串		|			| 資料庫連線密碼
-DATABASE_DBNAME		| 字串		|			| 資料庫名稱
+DATABASE.HOST		| 字串		|			| 目標資料庫主機位置
+DATABASE.PORT		| 整數		|			| 目標資料庫埠號
+DATABASE.SECURE		| 布林值	| false		| 是否啟用加密連線
+DATABASE.USERNANE	| 字串		|			| 資料庫連線帳號
+DATABASE.PASSWORD	| 字串		|			| 資料庫連線密碼
+DATABASE.DBNAME		| 字串		|			| 資料庫名稱
 
 ---
 
@@ -56,11 +56,11 @@ DATABASE_DBNAME		| 字串		|			| 資料庫名稱
 
 參數							| 資料型態		| 預設值		| 說明
 ---								| ---			| ---			| ---
-SUBSCRIBER_VERBOSE				| 布林職		| false			| 是否顯示完整除錯訊息
-SUBSCRIBER_PIPELINE_START		| 整數			| 0				| 指定接收範圍的起始管線，不得大於最終管線的數值。通常資料節點會將資料做分區處理，分為多個管線進行推送，我們可以指定要接收特定範圍的管線資料，實現資料分片（Sharding）或部分資料處理的需求。
-SUBSCRIBER_PIPELINE_END			| 整數			| -1			| 指定接受範圍的最終管線，若設定 -1 為起始管線之後的所有管線。
-INITIAL_LOAD_ENABLED			| 布林職		| true			| 是否啟用初始載入機制
-INITIAL_LOAD_OMITTED_COUNT		| 整數			| 100000		| 指定與資料節點落差筆數。當因為系統異常、網路異常而導致資料落差過大時，會以初始化載入機制（Initial Load）重建目標資料庫。
+SUBSCRIBER.VERBOSE				| 布林職		| false			| 是否顯示完整除錯訊息
+SUBSCRIBER.PIPELINE_START		| 整數			| 0				| 指定接收範圍的起始管線，不得大於最終管線的數值。通常資料節點會將資料做分區處理，分為多個管線進行推送，我們可以指定要接收特定範圍的管線資料，實現資料分片（Sharding）或部分資料處理的需求。
+SUBSCRIBER.PIPELINE_END			| 整數			| -1			| 指定接受範圍的最終管線，若設定 -1 為起始管線之後的所有管線。
+INITIAL_LOAD.ENABLED			| 布林職		| true			| 是否啟用初始載入機制
+INITIAL_LOAD.OMITTED_COUNT		| 整數			| 100000		| 指定與資料節點落差筆數。當因為系統異常、網路異常而導致資料落差過大時，會以初始化載入機制（Initial Load）重建目標資料庫。
 
 ---
 
