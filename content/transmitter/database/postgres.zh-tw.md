@@ -6,6 +6,49 @@ title: PostgreSQL Transmitter
 
 ---
 
+## 快速安裝
+
+若要安裝 PostgreSQL Transmitter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
+
+{{< highlight yaml "linenos=table" >}}
+version: '3'
+
+services:
+   gravity-transmitter-postgres:
+     image: "brobridgehub/gravity-transmitter-postgres:v3.0.0"
+     hostname: gravity-transmitter-postgres
+     restart: always
+     environment:
+
+       # NATS 的連線資訊
+       GRAVITY_TRANSMITTER_POSTGRES_GRAVITY_HOST: 172.17.0.1:4222
+
+       # 目標資料庫的連線資訊
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_HOST: 172.17.0.1
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_PORT: 5432
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_USERNAME: postgres
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_PASSWORD: 1qaz@WSX
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_DBNAME: gravity
+
+       # 設定要訂閱的資料集(accountData)，以及要寫入的資料表(accounts)
+       GRAVITY_TRANSMITTER_POSTGRES_SUBSCRIPTION_SETTINGS: |  
+        {
+          "subscriptions": {
+            "accountData": [
+              "accounts"
+            ]
+          }
+        }
+{{< /highlight >}}
+
+然後執行以下命令：
+
+```shell
+docker-compose -f transmitter.yaml up -d
+```
+
+---
+
 ## 組態參數設定
 
 若要設定 PostgresSQL 資料傳輸器（Transmitter），可以藉由代入環境變數（Environment Variable）來達成，以下將對傳輸器所支援的組態參數進行詳細說明。

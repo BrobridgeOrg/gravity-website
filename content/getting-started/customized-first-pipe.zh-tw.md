@@ -271,7 +271,6 @@ services:
             ]
           }
         }
-     depends_on:
 {{< /highlight >}}
 {{< /tab >}}
 {{< /tabs >}}
