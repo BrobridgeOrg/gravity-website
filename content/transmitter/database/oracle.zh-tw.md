@@ -1,5 +1,5 @@
 ---
-title: Oracle
+title: Oracle Transmitter
 ---
 
 `Oracle Transmitter` 用於接收 GRAVITY 資料節點的資料，並即時寫入 Oracle 資料庫系統。
@@ -8,7 +8,7 @@ title: Oracle
 
 ## 快速安裝
 
-若要安裝 ORACLE Transmitter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
+若要安裝 MongoDB Transmitter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'
