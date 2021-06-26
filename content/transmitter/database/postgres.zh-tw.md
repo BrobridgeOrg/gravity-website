@@ -25,7 +25,7 @@ services:
 
        # 目標資料庫的連線資訊
        GRAVITY_TRANSMITTER_POSTGRES_DATABASE_HOST: 172.17.0.1
-       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_PORT: 5432
+       GRAVITY_TRANSMITTER_POSTGRES_DATABASE_PORT: 32768
        GRAVITY_TRANSMITTER_POSTGRES_DATABASE_USERNAME: postgres
        GRAVITY_TRANSMITTER_POSTGRES_DATABASE_PASSWORD: 1qaz@WSX
        GRAVITY_TRANSMITTER_POSTGRES_DATABASE_DBNAME: gravity
@@ -58,9 +58,9 @@ docker-compose -f transmitter.yaml up -d
 
 為了讓參數更容易被描述和說明，本文件將以簡化的方式表示各個參數，實際上所有所有環境變數皆以以下方式呈現：
 
-> GRAVITY_TRANSMITTER_POSTGRESQL_ + <參數名稱>
+> GRAVITY_TRANSMITTER_POSTGRES_ + <參數名稱>
 
-而參數名稱因為分類，所有的字元「 . 」在環境變數上都將替換成字元「 _ 」表示，例如當我們說參數為 GRAVITY.HOST 時，實際的環境變數為 GRAVITY_TRANSMITTER_POSTGRESQL_GRAVITY_HOST。
+而參數名稱因為分類，所有的字元「 . 」在環境變數上都將替換成字元「 _ 」表示，例如當我們說參數為 GRAVITY.HOST 時，實際的環境變數為 GRAVITY_TRANSMITTER_POSTGRES_GRAVITY_HOST。
 {{< /hint >}}
 
 ---
@@ -109,7 +109,7 @@ INITIAL_LOAD.OMITTED_COUNT		| 整數			| 100000		| 指定與資料節點落差�
 
 ### 資料訂閱規則設定
 
-GRAVITY 資料節點有多個資料集可供訂閱，透過設定 `GRAVITY_TRANSMITTER_POSTGRESQL_SUBSCRIPTION_SETTINGS` 環境變數，可以指定要訂閱的資料集名稱。資料傳輸器會依據設定，從指定的資料集（Collection）中獲取資料，然後寫入到目標資料庫的資料表（Table）。
+GRAVITY 資料節點有多個資料集可供訂閱，透過設定 `GRAVITY_TRANSMITTER_POSTGRES_SUBSCRIPTION_SETTINGS` 環境變數，可以指定要訂閱的資料集名稱。資料傳輸器會依據設定，從指定的資料集（Collection）中獲取資料，然後寫入到目標資料庫的資料表（Table）。
 
 以下設定格式用於表示資料集和對應資料表的關係：
 
