@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL
+title: PostgreSQL Transmitter
 ---
 
 `Postgres Transmitter` 是 GRAVITY 的資料傳輸器，用於接收 GRAVITY 資料節點的資料，並即時寫入 PostgreSQL 資料庫系統。
@@ -51,7 +51,7 @@ DATABASE_DBNAME		| 字串		|			| 資料庫名稱
 
 ### 進階設定
 
-這例是所有關於資料傳輸器的進階設定。
+這裡是所有關於資料傳輸器的進階設定。
 
 參數							| 資料型態		| 預設值		| 說明
 ---								| ---			| ---			| ---
