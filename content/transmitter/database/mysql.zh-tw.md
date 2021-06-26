@@ -8,7 +8,7 @@ title: MySQL Transmitter
 
 ## 快速安裝
 
-若要安裝 PostgreSQL Transmitter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
+若要安裝 MySQL Transmitter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'
@@ -74,7 +74,7 @@ docker-compose -f transmitter.yaml up -d
 GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
 GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
 SUBSCRIBER.SUBSCRIBER_ID	| 字串		| mysql_transmitter	| 指定資料傳輸器在資料節點上的唯一識別 ID
-SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| Postgres Transmitter	| 指定資料傳輸器的顯示名稱
+SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| MySQL Transmitter	| 指定資料傳輸器的顯示名稱
 
 ---
 
