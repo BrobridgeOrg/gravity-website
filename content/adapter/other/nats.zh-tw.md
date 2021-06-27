@@ -85,7 +85,7 @@ ADAPTER.ADAPTER_NAME		| 字串		| NATS Adapter			| 指定資料源適配器的�
 {
 	"sources": {
 		"<來源名稱 A>": {
-			"host": "<來源主機名城稱",
+			"host": "<來源主機名稱>",
 			"port": 32803,
 			"channel": "example.topic_a"
 		},
@@ -93,7 +93,7 @@ ADAPTER.ADAPTER_NAME		| 字串		| NATS Adapter			| 指定資料源適配器的�
 			"host": "<來源主機名稱>",
 			"port": 32803,
 			"channel": "example.topic_b"
-		},
+		}
 	}
 }
 ```
