@@ -6,6 +6,45 @@ title: NATS Adapter
 
 ---
 
+## 快速安裝
+
+若要安裝 NATS Adapter，可以準備一個部署容器的 YMAL 檔案（adapter.yaml）包括所有的相關設定，如下：
+
+{{< highlight yaml "linenos=table" >}}
+version: '3'
+
+services:
+   gravity-adapter-nats:
+     image: "brobridgehub/gravity-adapter-nats:v3.0.0"
+     hostname: gravity-adapter-nats
+     restart: always
+     environment:
+
+       # GRAVIRT 的連線資訊
+       GRAVITY_ADAPTER_NATS_GRAVITY_HOST: 172.17.0.1
+       GRAVITY_ADAPTER_NATS_GRAVITY_PORT: 4222
+
+       # 資料源設定
+       GRAVITY_ADAPTER_NATS_SOURCE_SETTINGS: |  
+        {
+          "sources": {
+            "nats_server": {
+              "host": "172.17.0.1",
+              "port": 32803,
+              "channel": "example.my_topic",
+            }
+          }
+        }
+{{< /highlight >}}
+
+然後執行以下命令：
+
+```shell
+docker-compose -f adapter.yaml up -d
+```
+
+---
+
 ## 組態參數設定
 
 若要設定 NATS 資料源適配器（Adapter），可以藉由代入環境變數（Environment Variable）來達成，以下將對適配器所支援的組態參數進行詳細說明。
