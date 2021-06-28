@@ -1,4 +1,4 @@
-baseURL = "http://gravity.brobridge.com.tw"
+baseURL = "http://gravity.brobridge.com"
 languageCode = "zh-tw"
 title = "Gravity - Software-defined Data Platform"
 theme = "geekdoc"
