@@ -51,7 +51,7 @@ docker-compose -f transmitter.yaml up -d
 
 ## 組態參數設定
 
-若要設定 MySQL 資料傳輸器（Transmitter），可以藉由代入環境變數（Environment Variable）來達成，以下將對傳輸器所支援的組態參數進行詳細說明。
+若要設定 MSSQL 資料傳輸器（Transmitter），可以藉由代入環境變數（Environment Variable）來達成，以下將對傳輸器所支援的組態參數進行詳細說明。
 
 {{< hint warning >}}
 **本文件的參數方法**
