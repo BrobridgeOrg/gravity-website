@@ -1,0 +1,27 @@
+.browser-window {
+  text-align: left;
+  width: 100%;
+  height: 25rem;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #212121;
+}
+
+.browser-window .top-bar {
+  height: 2.4rem;
+  border-radius: 5px 5px 0 0;
+  border-top: thin solid #eaeae9;
+  border-bottom: thin solid #616161;
+}
+
+.browser-window .circle {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  border-radius: 50%;
+	border: solid thin #757575;
+}
+
+.browser-window .circles {
+  margin: 5px 11px;
+}

@@ -1,0 +1,109 @@
+.issue1-img {
+	background: url("../img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+	height: 100%;
+	background-position: center;
+	color: #FFF;
+}
+
+.issue2-img {
+	background: url("../img/denny-muller-JyRTi3LoQnc-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+	height: 100%;
+	background-position: center;
+	color: #FFF;
+}
+
+.issue3-img {
+	background: url("../img/mathew-schwartz-sb7RUrRMaC4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+	height: 100%;
+	background-position: center left;
+	color: #FFF;
+}
+
+.topic-img {
+	background: url("../img/alina-grubnyak-ZiQkhI7417A-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+	height: 100%;
+	background-position: bottom left;
+}
+
+.btn-hover {
+	transition: letter-spacing 0.3s;
+	border-radius:0;
+}
+.btn-hover:hover {
+	letter-spacing: 0.1rem;
+}
+
+.use-gravity .red-line {
+	position: absolute;
+	width: 9rem;
+	height: 0.5rem;
+	left: 0;
+	top: 0.4rem;
+
+	background: linear-gradient(90deg, rgba(181, 39, 34, 0) 0%, #B52722 100%);
+	transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.use-gravity-title {
+	color: #B52722;
+}
+
+.use-gravity-title-line {
+	width:1rem;
+	height:0.5rem;
+	background:#212121;
+	margin-bottom: 1rem;
+}
+.use-gravity-title-area {
+	height:30rem;
+	width:100%;
+	background: rgba(33, 33, 33, 0.6);
+	mix-blend-mode: normal;
+}
+
+.vertical-red-line {
+	position: absolute;
+	width: 19px;
+	height: 232px;
+	right: 6rem;
+	bottom: -4rem;
+
+	background: linear-gradient(180deg, rgba(181, 39, 34, 0) 0%, #B52722 100%);
+	transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.db-icon {
+	background-color:#F5F5F5;
+	border-radius: 2rem;
+	width: 60%;
+	height: auto;
+}
+
+.btn-send {
+	border:0;
+	background:transparent;
+	font-size:2rem;
+}
+.btn-send:hover {
+	color: #B52722;
+}
+
+.bg-light {
+	background-color: #f2f2f3 !important;
+}
+
+.support-adapter {
+	margin: 0.4rem ;
+	border: solid 2px #212121;
+	border-radius: 6px;
+	color: #212121;
+	text-decoration: none;
+}
