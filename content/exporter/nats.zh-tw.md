@@ -8,15 +8,15 @@ title: NATS Exporter
 
 ## 快速安裝
 
-若要安裝 NATS Exporter，可以準備一個部署容器的 YMAL 檔案（transmitter.yaml）包括所有的相關設定，如下：
+若要安裝 NATS Exporter，可以準備一個部署容器的 YMAL 檔案（exporter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'
 
 services:
-   gravity-transmitter-nats:
-     image: "brobridgehub/gravity-transmitter-nats:v3.0.0"
-     hostname: gravity-transmitter-nats
+   gravity-exporter-nats:
+     image: "brobridgehub/gravity-exporter-nats:v3.0.0"
+     hostname: gravity-exporter-nats
      restart: always
      environment:
 
@@ -40,7 +40,7 @@ services:
 然後執行以下命令：
 
 ```shell
-docker-compose -f transmitter.yaml up -d
+docker-compose -f exporter.yaml up -d
 ```
 
 ---
@@ -65,12 +65,12 @@ docker-compose -f transmitter.yaml up -d
 
 這裡是所有關於 GRAVITY 的相關參數，用於讓資料輸出器連接上資料節點，並註冊成為合法的資料接收端。
 
-參數						| 資料型態	| 預設值				| 說明
----							| ---		| ---					| ---
-GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
+參數					| 資料型態	| 預設值				| 說明
+---					| ---		| ---					| ---
+GRAVITY.HOST				| 字串		|					| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
 GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
-SUBSCRIBER.SUBSCRIBER_ID	| 字串		| nats_exporter			| 指定資料輸出器在資料節點上的唯一識別 ID
-SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| NATS Exporter			| 指定資料輸出器的顯示名稱
+SUBSCRIBER.SUBSCRIBER_ID		| 字串		| nats_exporter				| 指定資料輸出器在資料節點上的唯一識別 ID
+SUBSCRIBER.SUBSCRIBER_NAME		| 字串		| NATS Exporter				| 指定資料輸出器的顯示名稱
 
 ---
 
@@ -79,8 +79,8 @@ SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| NATS Exporter			| 指定資料輸出器�
 這裡是所有關於 NATS 的參數，用於讓資料輸出器連接上目標 NATS 主機。
 
 參數				| 資料型態	| 預設值	| 說明
----					| ---		| ---		| ---
-NATS.HOST			| 字串		|			| 目標 NATS 完整連線資訊（172.17.0.1:32803）
+---				| ---		| ---		| ---
+NATS.HOST			| 字串		|		| 目標 NATS 完整連線資訊（172.17.0.1:32803）
 
 ---
 
