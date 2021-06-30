@@ -15,7 +15,7 @@ version: '3'
 
 services:
    gravity-transmitter-mysql:
-     image: "brobridgehub/gravity-transmitter-mysql:v3.0.0"
+     image: "brobridgehub/gravity-transmitter-mysql:v2.0.0"
      hostname: gravity-transmitter-mysql
      restart: always
      environment:
@@ -70,11 +70,11 @@ docker-compose -f transmitter.yaml up -d
 這裡是所有關於 GRAVITY 的相關參數，用於讓資料傳輸器連接上資料節點，並註冊成為合法的資料接收端。
 
 參數						| 資料型態	| 預設值				| 說明
----							| ---		| ---					| ---
-GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
-GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
-SUBSCRIBER.SUBSCRIBER_ID	| 字串		| mysql_transmitter	| 指定資料傳輸器在資料節點上的唯一識別 ID
-SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| MySQL Transmitter	| 指定資料傳輸器的顯示名稱
+---						| ---		| ---					| ---
+GRAVITY.HOST					| 字串		|					| 目標 GRAVITY 之完整連線資訊（172.17.0.1:4222）
+GRAVITY.DOMAIN					| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
+SUBSCRIBER.SUBSCRIBER_ID			| 字串		| mysql_transmitter			| 指定資料傳輸器在資料節點上的唯一識別 ID
+SUBSCRIBER.SUBSCRIBER_NAME			| 字串		| MySQL Transmitter			| 指定資料傳輸器的顯示名稱
 
 ---
 
@@ -82,14 +82,14 @@ SUBSCRIBER.SUBSCRIBER_NAME	| 字串		| MySQL Transmitter	| 指定資料傳輸器
 
 這裡是所有關於資料庫的參數，用於讓資料傳輸器連接上目標資料庫。
 
-參數				| 資料型態	| 預設值	| 說明
----					| ---		| ---		| ---
-DATABASE.HOST		| 字串		|			| 目標資料庫主機位置
-DATABASE.PORT		| 整數		|			| 目標資料庫埠號
+參數			| 資料型態	| 預設值	| 說明
+---			| ---		| ---		| ---
+DATABASE.HOST		| 字串		|		| 目標資料庫主機位置
+DATABASE.PORT		| 整數		|		| 目標資料庫埠號
 DATABASE.SECURE		| 布林值	| false		| 是否啟用加密連線
-DATABASE.USERNANE	| 字串		|			| 資料庫連線帳號
-DATABASE.PASSWORD	| 字串		|			| 資料庫連線密碼
-DATABASE.DBNAME		| 字串		|			| 資料庫名稱
+DATABASE.USERNANE	| 字串		|		| 資料庫連線帳號
+DATABASE.PASSWORD	| 字串		|		| 資料庫連線密碼
+DATABASE.DBNAME		| 字串		|		| 資料庫名稱
 
 ---
 
@@ -97,10 +97,10 @@ DATABASE.DBNAME		| 字串		|			| 資料庫名稱
 
 這裡是所有關於資料傳輸器的進階設定。
 
-參數							| 資料型態		| 預設值		| 說明
----								| ---			| ---			| ---
-SUBSCRIBER.VERBOSE				| 布林職		| false			| 是否顯示完整除錯訊息
-SUBSCRIBER.PIPELINE_START		| 整數			| 0				| 指定接收範圍的起始管線，不得大於最終管線的數值。通常資料節點會將資料做分區處理，分為多個管線進行推送，我們可以指定要接收特定範圍的管線資料，實現資料分片（Sharding）或部分資料處理的需求。
+參數					| 資料型態		| 預設值		| 說明
+---					| ---			| ---			| ---
+SUBSCRIBER.VERBOSE			| 布林職		| false			| 是否顯示完整除錯訊息
+SUBSCRIBER.PIPELINE_START		| 整數			| 0			| 指定接收範圍的起始管線，不得大於最終管線的數值。通常資料節點會將資料做分區處理，分為多個管線進行推送，我們可以指定要接收特定範圍的管線資料，實現資料分片（Sharding）或部分資料處理的需求。
 SUBSCRIBER.PIPELINE_END			| 整數			| -1			| 指定接受範圍的最終管線，若設定 -1 為起始管線之後的所有管線。
 INITIAL_LOAD.ENABLED			| 布林職		| true			| 是否啟用初始載入機制
 INITIAL_LOAD.OMITTED_COUNT		| 整數			| 100000		| 指定與資料節點落差筆數。當因為系統異常、網路異常而導致資料落差過大時，會以初始化載入機制（Initial Load）重建目標資料庫。
