@@ -1,5 +1,5 @@
 ---
-title: REST
+title: REST Adapter
 ---
 
 `REST Adapter` 是一個 RESTful API Server ，用於接收 HTTP POST 請求的事件資料，並將資料輸入進 GRAVITY 資料節點儲存。
