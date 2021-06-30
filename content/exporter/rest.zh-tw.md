@@ -75,6 +75,18 @@ SUBSCRIBER.SUBSCRIBER_NAME		| 字串		| NATS Exporter				| 指定資料輸出器
 
 ---
 
+### 進階設定
+
+這裡是所有關於資料輸出器的進階設定。
+
+參數					| 資料型態		| 預設值		| 說明
+---					| ---			| ---			| ---
+SUBSCRIBER.VERBOSE			| 布林職		| false			| 是否顯示完整除錯訊息
+SUBSCRIBER.PIPELINE_START		| 整數			| 0			| 指定接收範圍的起始管線，不得大於最終管線的數值。通常資料節點會將資料做分區處理，分為多個管線進行推送，我們可以指定要接收特定範圍的管線資料，實現資料分片（Sharding）或部分資料處理的需求。
+SUBSCRIBER.PIPELINE_END			| 整數			| -1			| 指定接受範圍的最終管線，若設定 -1 為起始管線之後的所有管線。
+INITIAL_LOAD.ENABLED			| 布林職		| true			| 是否啟用初始載入機制
+INITIAL_LOAD.OMITTED_COUNT		| 整數			| 100000		| 指定與資料節點落差筆數。當因為系統異常、網路異常而導致資料落差過大時，會以初始化載入機制（Initial Load）重新輸出。
+
 ### 資料訂閱規則設定
 
 GRAVITY 資料節點有多個資料集可供訂閱，透過設定 `GRAVITY_EXPORTER_REST_SUBSCRIPTION_SETTINGS` 環境變數，可以指定要訂閱的資料集名稱。資料輸出器會依據設定，從指定的資料集（Collection）中獲取資料，然後呼叫目標的 RESTful API 。
