@@ -152,6 +152,13 @@ events.create					| 字串		|						| 自定義建立事件的名稱
 events.update					| 字串		|						| 自定義變更事件的名稱
 events.delete					| 字串		|						| 自定義刪除事件的名稱
 
+{{< hint warning >}}
+**注意事項**
+
+如果您欲捕獲事件的資料表沒有設置 Primary Key 則在 DELETE 資料後 PostgreSQL Adapter 會出現 syntax error 且不會發送此刪除事件。
+
+{{< /hint >}}
+
 ---
 
 ### 開啟 PostgreSQL CDC（Logical Decoding）
