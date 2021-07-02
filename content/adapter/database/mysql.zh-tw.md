@@ -143,6 +143,7 @@ events.create					| 字串		|						| 自定義建立事件的名稱
 events.update					| 字串		|						| 自定義變更事件的名稱
 events.delete					| 字串		|						| 自定義刪除事件的名稱
 
+---
 
 ### 開啟 MySQL CDC（binlog）
 
