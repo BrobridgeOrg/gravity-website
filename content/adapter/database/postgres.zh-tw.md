@@ -88,7 +88,7 @@ GRAVITY.HOST				| 字串		|					| 目標 GRAVITY 之主機位置
 GRAVITY.PORT				| 整數		|					| 目標 GRAVITY 主機之埠號
 GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
 ADAPTER.ADAPTER_ID			| 字串		| postgres_adapter			| 指定資料源適配器在資料節點上的唯一識別 ID
-ADAPTER.ADAPTER_NAME			| 字串		| Postgre Adapter			| 指定資料源適配器的顯示名稱
+ADAPTER.ADAPTER_NAME			| 字串		| Postgres Adapter			| 指定資料源適配器的顯示名稱
 
 ---
 
