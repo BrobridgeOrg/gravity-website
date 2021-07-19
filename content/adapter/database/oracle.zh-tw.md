@@ -19,7 +19,7 @@ title: Oracle
 
 ## 快速安裝
 
-若要安裝 Oracle Adapter，可以準備一個部署容器的 YMAL 檔案（adapter.yaml）包括所有的相關設定，如下：
+若要安裝 Oracle Adapter，可以準備一個部署容器的 YAML 檔案（adapter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'
@@ -95,8 +95,8 @@ docker-compose -f adapter.yaml up -d
 GRAVITY.HOST				| 字串		|						| 目標 GRAVITY 之主機位置
 GRAVITY.PORT				| 整數		|						| 目標 GRAVITY 主機之埠號
 GRAVITY.DOMAIN				| 字串		| gravity				| 指定目標 GRAVITY 資料節點之 Domain
-ADAPTER.ADAPTER_ID			| 字串		| mysql_adapter			| 指定資料源適配器在資料節點上的唯一識別 ID
-ADAPTER.ADAPTER_NAME		| 字串		| MySQL Adapter			| 指定資料源適配器的顯示名稱
+ADAPTER.ADAPTER_ID			| 字串		| oracle_adapter			| 指定資料源適配器在資料節點上的唯一識別 ID
+ADAPTER.ADAPTER_NAME		| 字串		| Oracle Adapter			| 指定資料源適配器的顯示名稱
 
 ---
 

@@ -8,7 +8,7 @@ title: NATS Exporter
 
 ## 快速安裝
 
-若要安裝 NATS Exporter，可以準備一個部署容器的 YMAL 檔案（exporter.yaml）包括所有的相關設定，如下：
+若要安裝 NATS Exporter，可以準備一個部署容器的 YAML 檔案（exporter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'

@@ -8,7 +8,7 @@ title: REST Adapter
 
 ## 快速安裝
 
-若要安裝 REST Adapter，可以準備一個部署容器的 YMAL 檔案（adapter.yaml）包括所有的相關設定，如下：
+若要安裝 REST Adapter，可以準備一個部署容器的 YAML 檔案（adapter.yaml）包括所有的相關設定，如下：
 
 {{< highlight yaml "linenos=table" >}}
 version: '3'
