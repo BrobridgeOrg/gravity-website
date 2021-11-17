@@ -1,4 +1,5 @@
 baseURL = "http://gravity.brobridge.com"
+
 languageCode = "zh-tw"
 title = "Gravity - Software-defined Data Platform"
 theme = "geekdoc"
@@ -18,8 +19,10 @@ disablePathToLower = true
     endLevel = 9
 
 [params]
+	officalURL = "https://brobridge.com"
   geekdocToC = 4
   geekdocLogo = "logo.png"
+  geekdocLogoWide = "logo-wide.png"
   geekdocSearch = true
   geekdocSearchShowParent = true
   geekdocImageLazyLoading = true
