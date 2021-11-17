@@ -16,7 +16,7 @@
   --button-background: #62cb97;
   --button-border-color: #4ec58a;
 
-  --link-color: #d65454;
+  --link-color: #BF360C;
   --link-color-visited: #c54e8a;
 
   --code-background: #f5f6f8;
@@ -45,7 +45,7 @@
 	--button-background: #62cb97;
 	--button-border-color: #4ec58a;
 
-	--link-color: #d65454;
+	--link-color: #BF360C;
 	--link-color-visited: #c54e8a;
 
 	--code-background: #f5f6f8;
@@ -75,7 +75,7 @@
   --button-background: #62cb97;
   --button-border-color: #4ec58a;
 
-  --link-color: #d65454;
+  --link-color: #BF360C;
   --link-color-visited: #c27a9e;
 
   --code-background: #2f353a;
@@ -103,7 +103,7 @@
 	--button-background: #62cb97;
 	--button-border-color: #4ec58a;
 
-	--link-color: #d65454;
+	--link-color: #BF360C;
 	--link-color-visited: #c27a9e;
 
 	--code-background: #2f353a;
@@ -128,12 +128,24 @@
 }
 
 .gdoc-brand .gdoc-brand__img {
-	width: 3rem;
-	height: 3rem;
+	width: auto;
+	height: 1.4rem;
+	margin-top:7px;
+	display: block;
+}
+
+.gdoc-header {
+	background-color: #fff;
+	border-bottom: 0;
 }
 
 .gdoc-header .container {
-	padding: 0.5rem;
+	padding: 0;
+}
+
+.main-link {
+	font-size: 14px;
+	color: #212121 !important;
 }
 
 .cluster rect {
@@ -143,4 +155,10 @@
 
 .cluster-label span {
 	color: #888 !important;
+}
+
+@media only screen and (max-width: 920px) {
+  .main-link, #gdoc-dark-mode {
+    display: none;
+  }
 }
